@@ -1,0 +1,45 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 15/02/2024 14:28:04
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7          ORG    $1000
+00001000                             8  START:
+00001000  =00000003                  9  X       EQU    3                  ; first instruction of program
+00001000  =00000007                 10  Y       EQU    7
+00001000                            11  
+00001000                            12  * Put program code here
+00001000  303C 0003                 13          MOVE   #X, D0
+00001004  323C 0007                 14          MOVE   #Y, D1
+00001008                            15      
+00001008  5240                      16  LOOP    ADD    #$1, D0
+0000100A  5341                      17          SUB    #$1, D1
+0000100C  B240                      18          CMP    D0, D1
+0000100E  6F00 0008                 19          BLE    EXIT
+00001012  60F4                      20          BRA    LOOP
+00001014                            21  
+00001014  FFFF FFFF                 22          SIMHALT             ; halt simulator
+00001018                            23  
+00001018                            24  * Put variables and constants here
+00001018  303C 0003                 25  EXIT    MOVE   #03, D0
+0000101C  4E4F                      26          TRAP   #15
+0000101E                            27  
+0000101E                            28          END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+EXIT                1018
+LOOP                1008
+START               1000
+X                   3
+Y                   7

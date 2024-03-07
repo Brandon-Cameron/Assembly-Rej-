@@ -1,0 +1,47 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 15/02/2024 14:42:32
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7          ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  INITIALISE 
+00001000  103C 0003                 12          MOVE.B #3, D0
+00001004  123C 0000                 13          MOVE.B #0, D1
+00001008                            14          
+00001008                            15  PLAY_LOOP 
+00001008  B03C 0001                 16          CMP.B  #1, D0
+0000100C  6600 0006                 17          BNE    GAME_POINTS
+00001010  6700 000A                 18          BEQ    GAME_OVER
+00001014                            19          
+00001014                            20  GAME_POINTS
+00001014  0601 000A                 21          ADD.B  #10, D1
+00001018  5300                      22          SUB.B  #1, D0
+0000101A  60EC                      23          BRA    PLAY_LOOP
+0000101C                            24        
+0000101C                            25  GAME_OVER
+0000101C  FFFF FFFF                 26          SIMHALT             ; halt simulator
+00001020                            27  
+00001020                            28  * Put variables and constants here
+00001020                            29  
+00001020                            30          END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+GAME_OVER           101C
+GAME_POINTS         1014
+INITIALISE          1000
+PLAY_LOOP           1008
+START               1000

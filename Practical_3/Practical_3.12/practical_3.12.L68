@@ -1,0 +1,40 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 15/02/2024 14:30:49
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7          ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000  11FC 000F 0400            11  INFLOOP MOVE.B #$0F, $000400
+00001006                            12  
+00001006  7C03                      13  DELAY   MOVE.L #$3, D6
+00001008                            14  
+00001008  5386                      15  DEL1    SUB.L  #$1, D6
+0000100A  66FC                      16          BNE    DEL1
+0000100C  7004                      17          MOVE.L #$4, D0
+0000100E  4EF8 1000                 18          JMP    INFLOOP
+00001012                            19  
+00001012  FFFF FFFF                 20          SIMHALT             ; halt simulator
+00001016                            21  
+00001016                            22  * Put variables and constants here
+00001016                            23  
+00001016                            24          END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+DEL1                1008
+DELAY               1006
+INFLOOP             1000
+START               1000

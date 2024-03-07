@@ -1,0 +1,153 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 18/01/2024 14:56:24
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00000000  =0000000D                  7  CR      EQU    $0D
+00000000  =0000000A                  8  LF      EQU    $0A
+00000000                             9  
+00001000                            10          ORG    $1000
+00001000                            11  START:                          ; first instruction of program
+00001000                            12  
+00001000                            13  * Put program code here
+00001000                            14  
+00001000  43F9 00001112             15  LOOP    LEA     MESSAGE,A1           
+00001006  103C 000E                 16          MOVE.B  #14,D0
+0000100A  4E4F                      17          TRAP    #15
+0000100C                            18          
+0000100C                            19          
+0000100C  103C 0004                 20          MOVE.B  #4,D0
+00001010  4E4F                      21          TRAP    #15
+00001012  B2BC 00000000             22          CMP.L   #0,D1
+00001018  6700 0022                 23          BEQ     DONE
+0000101C                            24          
+0000101C  B23C 0000                 25          CMP.B   #0,D1
+00001020  6D00 000C                 26          BLT     INVALID
+00001024  B23C 0009                 27          CMP.B   #9,D1
+00001028  6E00 0004                 28          BGT     INVALID
+0000102C                            29          
+0000102C  60D2                      30          BRA     LOOP
+0000102E                            31          
+0000102E  43F9 00001134             32  INVALID LEA     INV,A1
+00001034  103C 000E                 33          MOVE.B  #14,D0
+00001038  4E4F                      34          TRAP    #15
+0000103A  60C4                      35          BRA     LOOP
+0000103C                            36          
+0000103C  103C 0009                 37  DONE    MOVE.B  #9,D0
+00001040  4E4F                      38          TRAP    #15             ; halt simulator
+00001042                            39          
+00001042  B23C 0001                 40          CMP.B   #1,D1
+00001046  6600 0010                 41          BNE     TWO
+0000104A  43F9 00001152             42          LEA     DISPONE,A1
+00001050  103C 000E                 43          MOVE.B  #14,D0
+00001054  4E4F                      44          TRAP    #15
+00001056  60A8                      45          BRA     LOOP
+00001058                            46          
+00001058  B23C 0002                 47  TWO     CMP.B   #2,D1
+0000105C  6600 0010                 48          BNE     THREE
+00001060  43F9 00001162             49          LEA     DISPTWO,A1
+00001066  103C 000E                 50          MOVE.B  #14,D0
+0000106A  4E4F                      51          TRAP    #15
+0000106C  6092                      52          BRA     LOOP
+0000106E                            53          
+0000106E  B23C 0003                 54  THREE   CMP.B   #3,D1
+00001072  6600 0012                 55          BNE     FOUR
+00001076  43F9 00001170             56          LEA     DISPTHREE,A1
+0000107C  103C 000E                 57          MOVE.B  #14,D0
+00001080  4E4F                      58          TRAP    #15
+00001082  6000 FF7C                 59          BRA     LOOP
+00001086                            60          
+00001086  B23C 0004                 61  FOUR    CMP.B   #4,D1
+0000108A  6600 0012                 62          BNE     FIVE
+0000108E  43F9 0000117E             63          LEA     DISPFOUR,A1
+00001094  103C 000E                 64          MOVE.B  #14,D0
+00001098  4E4F                      65          TRAP    #15
+0000109A  6000 FF64                 66          BRA     LOOP
+0000109E                            67          
+0000109E  B23C 0005                 68  FIVE    CMP.B   #5,D1
+000010A2  6600 0012                 69          BNE     SIX
+000010A6  43F9 0000118B             70          LEA     DISPFIVE,A1
+000010AC  103C 000E                 71          MOVE.B  #14,D0
+000010B0  4E4F                      72          TRAP    #15
+000010B2  6000 FF4C                 73          BRA     LOOP
+000010B6                            74          
+000010B6  B23C 0006                 75  SIX     CMP.B   #6,D1
+000010BA  6600 0012                 76          BNE     SEVEN
+000010BE  43F9 0000119B             77          LEA     DISPSIX,A1
+000010C4  103C 000E                 78          MOVE.B  #14,D0
+000010C8  4E4F                      79          TRAP    #15
+000010CA  6000 FF34                 80          BRA     LOOP
+000010CE                            81          
+000010CE  B23C 0007                 82  SEVEN   CMP.B   #7,D1
+000010D2  6600 0012                 83          BNE     EIGHT
+000010D6  43F9 000011AA             84          LEA     DISPSEVEN,A1
+000010DC  103C 000E                 85          MOVE.B  #14,D0
+000010E0  4E4F                      86          TRAP    #15
+000010E2  6000 FF1C                 87          BRA     LOOP
+000010E6                            88          
+000010E6  B23C 0008                 89  EIGHT   CMP.B   #8,D1
+000010EA  6600 0012                 90          BNE     NINE
+000010EE  43F9 000011B9             91          LEA     DISPEIGHT,A1
+000010F4  103C 000E                 92          MOVE.B  #14,D0
+000010F8  4E4F                      93          TRAP    #15
+000010FA  6000 FF04                 94          BRA     LOOP
+000010FE                            95        
+000010FE  B23C 0009                 96  NINE    CMP.B   #9,D1
+00001102  43F9 000011C9             97          LEA     DISPNINE,A1
+00001108  103C 000E                 98          MOVE.B  #14,D0
+0000110C  4E4F                      99          TRAP    #15
+0000110E  6000 FEF0                100          BRA     LOOP
+00001112                           101          
+00001112                           102  * Put variables and constants here
+00001112                           103  
+00001112= 45 4E 54 45 52 20 ...    104  MESSAGE DC.B    'ENTER A NUMBER, ENTER 0 TO EXIT: ',0
+00001134= 54 48 41 54 20 49 ...    105  INV     DC.B    'THAT IS NOT BETWEEN 1 AND 9',CR,LF,0
+00001152= 48 45 4C 4C 4F 20 ...    106  DISPONE DC.B    'HELLO MERCURY',CR,LF,0
+00001162= 48 45 4C 4C 4F 20 ...    107  DISPTWO DC.B    'HELLO VENUS',CR,LF,0
+00001170= 48 45 4C 4C 4F 20 ...    108  DISPTHREE DC.B    'HELLO EARTH',CR,LF,0
+0000117E= 48 45 4C 4C 4F 20 ...    109  DISPFOUR DC.B    'HELLO MARS',CR,LF,0
+0000118B= 48 45 4C 4C 4F 20 ...    110  DISPFIVE DC.B    'HELLO JUPITAR',CR,LF,0
+0000119B= 48 45 4C 4C 4F 20 ...    111  DISPSIX DC.B    'HELLO SATURN',CR,LF,0
+000011AA= 48 45 4C 4C 4F 20 ...    112  DISPSEVEN DC.B    'HELLO URANUS',CR,LF,0
+000011B9= 48 45 4C 4C 4F 20 ...    113  DISPEIGHT DC.B    'HELLO NEPTUNE',CR,LF,0
+000011C9= 48 45 4C 4C 4F 20 ...    114  DISPNINE DC.B    'HELLO PLUTO',CR,LF,0
+000011D7                           115  
+000011D7                           116          END     START           ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+CR                  D
+DISPEIGHT           11B9
+DISPFIVE            118B
+DISPFOUR            117E
+DISPNINE            11C9
+DISPONE             1152
+DISPSEVEN           11AA
+DISPSIX             119B
+DISPTHREE           1170
+DISPTWO             1162
+DONE                103C
+EIGHT               10E6
+FIVE                109E
+FOUR                1086
+INV                 1134
+INVALID             102E
+LF                  A
+LOOP                1000
+MESSAGE             1112
+NINE                10FE
+SEVEN               10CE
+SIX                 10B6
+START               1000
+THREE               106E
+TWO                 1058
